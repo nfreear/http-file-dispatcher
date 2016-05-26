@@ -37,5 +37,10 @@
             "vendor/bin/phpcs --standard=PSR2 -nv --encoding=utf-8 --extensions=php src/*",
             "# vendor/bin/phpmd src text ../iet-ou-QA/md/lax-rules.xml"
         ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
