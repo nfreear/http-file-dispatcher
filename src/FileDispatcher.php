@@ -21,7 +21,8 @@ class FileDispatcher implements LoggerAwareInterface
     const FILE_PATH = '%s/../../../../path/to/files/';
 
     const PREFIX_REGEX = '/.+[=\?\/]$/';
-    const URI_REGEX = '/[=\?\/](?P<file>\w[\w%_\-]+\w\.(?P<ext>\w{2,4}))$/';
+    // Allow short two-character filenames!
+    const URI_REGEX = '/[=\?\/](?P<file>\w[\w%_\-]*\w\.(?P<ext>\w{2,4}))$/';
     const ALLOW_EXT_REGEX = '/^(pdf|docx?|png|jpg)$/i';
     const DISP_INLINE_REGEX = '/^(pdf|png|jpg)$/i';
 
@@ -74,6 +75,8 @@ class FileDispatcher implements LoggerAwareInterface
             }
 
             self::dispatch($file, $file_path, $file_ext);
+        } else {
+            self::debug('no uri match');
         }
     }
 
