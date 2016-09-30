@@ -17,14 +17,16 @@ use Psr\Log\InvalidArgumentException;
 
 class FileDispatcher implements LoggerAwareInterface
 {
+    const SVG_FIX = true;
+
     const URI_REQUEST_PREFIX = '/file?=';
     const FILE_PATH = '%s/../../../../path/to/files/';
 
     const PREFIX_REGEX = '/.+[=\?\/]$/';
     // Allow short two-character filenames!
     const URI_REGEX = '/[=\?\/](?P<file>\w[\w%_\-]*\w\.(?P<ext>\w{2,4}))$/';
-    const ALLOW_EXT_REGEX = '/^(pdf|docx?|png|jpg)$/i';
-    const DISP_INLINE_REGEX = '/^(pdf|png|jpg)$/i';
+    const ALLOW_EXT_REGEX = '/^(pdf|docx?|png|jpe?g|svg)$/i';
+    const DISP_INLINE_REGEX = '/^(pdf|png|jpe?g|svg)$/i';
 
     protected $uri_request_prefix = self::URI_REQUEST_PREFIX;
     protected $file_path = self::FILE_PATH;
@@ -104,9 +106,14 @@ class FileDispatcher implements LoggerAwareInterface
      */
     protected static function mimetype($file_path)
     {
+        //return mime_content_type($file_path);
+
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $mimetype = finfo_file($finfo, $file_path);
         finfo_close($finfo);
+        if (self::SVG_FIX && preg_match('/\.svgz?$/', $file_path) && 'text/html' === $mimetype) {
+            $mimetype = 'image/svg+xml';
+        }
         return $mimetype;
     }
 
