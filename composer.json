@@ -1,10 +1,8 @@
 {
     "name": "nfreear/http-file-dispatcher",
     "description": "A simple library to serve static image files & documents over HTTP/S via PHP. | © Nick Freear (IET-OU).",
-    "homepage": "https://gist.github.com/nfreear/742cf6839c871467df0f020b349ef15e",
     "keywords": [ "October", "OpenUniversity", "IET-OU", "SVG" ],
     "license": "MIT",
-    "time": "2016-05-25",
     "type": "library",
     "authors": [
         { "name": "Nick Freear (@nfreear)", "role": "Developer" }

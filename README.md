@@ -5,6 +5,9 @@
 
 A simple library to serve static image files & documents over HTTP/S via PHP.
 
+```sh
+composer require nfreear/http-file-dispatcher
+```
 
 ## Example
 
@@ -41,5 +44,12 @@ class Plugin extends PluginBase
 }
 ```
 
+## License
+
+* License: `MIT`
+* Original [Gist][].
+
+[gist]: https://gist.github.com/nfreear/742cf6839c871467df0f020b349ef15e
+  "Date: 2016-05-25"
 [ci-img]: https://github.com/nfreear/http-file-dispatcher/actions/workflows/php.yml/badge.svg
 [ci]: https://github.com/nfreear/http-file-dispatcher/actions/workflows/php.yml
