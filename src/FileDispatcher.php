@@ -111,7 +111,7 @@ class FileDispatcher implements LoggerAwareInterface
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $mimetype = finfo_file($finfo, $file_path);
         finfo_close($finfo);
-        if (self::SVG_FIX && preg_match('/\.svgz?$/', $file_path) && 'text/html' === $mimetype) {
+        if (self::SVG_FIX && preg_match('/\.svgz?$/', $file_path) && ('text/html' === $mimetype || 'image/svg' === $mimetype)) {
             $mimetype = 'image/svg+xml';
         }
         return $mimetype;
