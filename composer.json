@@ -32,7 +32,7 @@
         "test": [
             "composer validate --no-interaction",
             "vendor/bin/parallel-lint --exclude vendor .",
-            "vendor/bin/phpcs --standard=PSR2 -nv --encoding=utf-8 --extensions=php src/*",
+            "vendor/bin/phpcs --config-set php_version 70400 --standard=PSR2 -nv --encoding=utf-8 --extensions=php src/*",
             "# vendor/bin/phpmd src text ../iet-ou-QA/md/lax-rules.xml"
         ]
     },

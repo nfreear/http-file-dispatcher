@@ -1,6 +1,6 @@
-<?php namespace Nfreear\HttpFileDispatcher;
+<?php // declare(strict_types=1);
 
-//namespace IET_OU\Frontend\Classes;
+namespace Nfreear\HttpFileDispatcher;
 
 /**
  * A simple library to serve static files & documents over HTTP/S via PHP.
@@ -118,7 +118,7 @@ class FileDispatcher implements LoggerAwareInterface
         return $mimetype;
     }
 
-    protected function error(string $message, $file, $code): mixed
+    protected function error(string $message, $file, $code)
     {
         self::debug([ 'ERROR', $code, $message, $file ]);
         if ($this->logger) {
@@ -134,7 +134,7 @@ class FileDispatcher implements LoggerAwareInterface
         throw new InvalidArgumentException("HTTP Error. $message: $file", $code);
     }
 
-    public static function debug(mixed $obj): void
+    public static function debug($obj): void
     {
         static $count = 0;
         header(sprintf('X-File-Dispatcher-%02d: %s', $count, json_encode($obj)));
