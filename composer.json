@@ -1,9 +1,9 @@
 {
     "name": "nfreear/http-file-dispatcher",
-    "description": "A simple library to serve static image files & documents over HTTP/S via PHP. © Nick Freear (IET-OU).",
+    "description": "A simple library to serve static image files & documents over HTTP/S via PHP. | © Nick Freear (IET-OU).",
     "homepage": "https://gist.github.com/nfreear/742cf6839c871467df0f020b349ef15e",
     "keywords": [ "October", "OpenUniversity", "IET-OU", "SVG" ],
-    "license": "proprietary",
+    "license": "MIT",
     "time": "2016-05-25",
     "type": "library",
     "authors": [
@@ -14,12 +14,12 @@
         "source": "https://github.com/nfreear/http-file-dispatcher"
     },
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=7.2",
         "psr/log": "^1.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "2.5.1",
-        "jakub-onderka/php-parallel-lint": "^0.9.2"
+        "php-parallel-lint/php-parallel-lint": "^1.3"
     },
     "suggest": {
         "phpmd/phpmd": "^2.4",
@@ -34,7 +34,7 @@
         "test": [
             "composer validate --no-interaction",
             "vendor/bin/parallel-lint --exclude vendor .",
-            "vendor/bin/phpcs --standard=PSR2 -nv --encoding=utf-8 --extensions=php src/*",
+            "# vendor/bin/phpcs --standard=PSR2 -nv --encoding=utf-8 --extensions=php src/*",
             "# vendor/bin/phpmd src text ../iet-ou-QA/md/lax-rules.xml"
         ]
     },
