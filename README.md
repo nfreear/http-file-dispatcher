@@ -1,4 +1,6 @@
 
+[![PHP Composer][ci-img]][ci]
+
 # http-file-dispatcher
 
 A simple library to serve static image files & documents over HTTP/S via PHP.
@@ -38,3 +40,6 @@ class Plugin extends PluginBase
     // ...
 }
 ```
+
+[ci-img]: https://github.com/nfreear/http-file-dispatcher/actions/workflows/php.yml/badge.svg
+[ci]: https://github.com/nfreear/http-file-dispatcher/actions/workflows/php.yml

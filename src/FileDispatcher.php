@@ -6,6 +6,7 @@
  * A simple library to serve static files & documents over HTTP/S via PHP.
  *
  * @copyright © Nick Freear, 25 May 2016.
+ *
  * @link  https://gist.github.com/nfreear/742cf6839c871467df0f020b349ef15e
  * @link  http://localhost/applaud/file?f=APPLAuD%20Principles.pdf  Example 1
  * @link  http://localhost/applaud/file?f=Fig%201.jpg  Example 2
@@ -32,7 +33,7 @@ class FileDispatcher implements LoggerAwareInterface
     protected $file_path = self::FILE_PATH;
     protected $logger;
 
-    public function setUriRequestPrefix($prefix)
+    public function setUriRequestPrefix(string $prefix): void
     {
         if (! preg_match(self::PREFIX_REGEX, $prefix)) {
             self::debug([ 'ERROR', 'Bad URI request prefix', $prefix ]);
@@ -41,12 +42,12 @@ class FileDispatcher implements LoggerAwareInterface
         $this->uri_request_prefix = $prefix;
     }
 
-    public function setFilePath($filePath)
+    public function setFilePath(string $filePath): void
     {
         $this->file_path = $filePath;
     }
 
-    public function setLogger(LoggerInterface $logger)
+    public function setLogger(LoggerInterface $logger): void
     {
         $this->logger = $logger;
     }
@@ -82,7 +83,7 @@ class FileDispatcher implements LoggerAwareInterface
         }
     }
 
-    protected static function dispatch($filename, $file_path, $file_ext)
+    protected static function dispatch(string $filename, string $file_path, $file_ext): void
     {
         $info = (object) [
             'file'  => $filename,
@@ -104,7 +105,7 @@ class FileDispatcher implements LoggerAwareInterface
     /**
      * @link http://stackoverflow.com/questions/23287341/how-to-get-mime-type-of-a-file-in-php-5-5
      */
-    protected static function mimetype($file_path)
+    protected static function mimetype(string $file_path): string
     {
         //return mime_content_type($file_path);
 
@@ -117,7 +118,7 @@ class FileDispatcher implements LoggerAwareInterface
         return $mimetype;
     }
 
-    protected function error($message, $file, $code)
+    protected function error(string $message, $file, $code): mixed
     {
         self::debug([ 'ERROR', $code, $message, $file ]);
         if ($this->logger) {
@@ -133,7 +134,7 @@ class FileDispatcher implements LoggerAwareInterface
         throw new InvalidArgumentException("HTTP Error. $message: $file", $code);
     }
 
-    public static function debug($obj)
+    public static function debug(mixed $obj): void
     {
         static $count = 0;
         header(sprintf('X-File-Dispatcher-%02d: %s', $count, json_encode($obj)));
